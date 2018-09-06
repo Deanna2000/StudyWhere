@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from django import forms
-from website.models import Product
-from website.models import Category
-from website.models import CustomerRegistration
+from studywhereapp.models import Product
+from studywhereapp.models import Category
+from studywhereapp.models import CustomerRegistration
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())

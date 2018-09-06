@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
-from website.forms import UserForm, ProductForm, CustomerForm
-from website.models import *
+from studywhereapp.forms import UserForm, ProductForm, CustomerForm
+from studywhereapp.models import *
 
 def index(request):
     template_name = 'index.html'

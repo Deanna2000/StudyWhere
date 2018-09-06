@@ -1,6 +1,6 @@
 ## Link to Ticket
 Closes
- 
+
 ## Description of Proposed Changes
 -
 
@@ -10,15 +10,14 @@ Outline the steps to test
 
 ```
 git fetch --all
-git checkout 
+git checkout
 code .
 
 ```
 
 1. navigate to the root
-1. python manage.py makemigrations website
+1. python manage.py makemigrations studywhereapp
 1. python manage.py migrate
-1. in DB Browser, add products/categories as needed
 1. python manage.py runserver
 1. login or register on view http://127.0.0.1:8000/
 

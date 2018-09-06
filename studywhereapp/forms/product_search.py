@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django import forms
-from website.models import Product
+from studywhereapp.models import Product
 
 
 

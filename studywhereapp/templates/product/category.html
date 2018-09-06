@@ -9,16 +9,16 @@
 
 <body>
 	{% block content %}
-	<link rel="stylesheet" type="text/css" href="{% static 'website/styles.css' %}" /> {% include "navbar.html" with nav_location=view.location %}
+	<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/styles.css' %}" /> {% include "navbar.html" with nav_location=view.location %}
 
-	<a href="{% url 'website:sell' %}">Sell Your Stuff!</a>
+	<a href="{% url 'studywhereapp:sell' %}">Sell Your Stuff!</a>
 	<h1>Category</h1>
 	{% for category in categories %}
 	<div>
 		<h2>{{category}} ({{category.product_set.count}})</h2>
 		{% for product in products %}
 			{% if product.category_name == category %}
-			<p><a href="{% url 'website:detail' pk=product.id%}">{{product}}</a></p>
+			<p><a href="{% url 'studywhereapp:detail' pk=product.id%}">{{product}}</a></p>
 			{% endif %}
 		{% endfor %}
 	</div>
