@@ -1,7 +1,12 @@
 {% load staticfiles %}
+{% load leaflet_tags %}
+
+
 <!DOCTYPE html>
 <html>
-  <head>
+	<head>
+			{% leaflet_js %}
+			{% leaflet_css %}
     <meta charset="utf-8">
 	<title>Bangazon</title>
   </head>
@@ -29,7 +34,11 @@
         <div class="col-sm-6 col-sm-offset-3">
           {% block content %}
           {% endblock content %}
-        </div>
+		</div>
+		<div>
+
+						{% leaflet_map "yourmap" %}
+		</div>
       </div>
     </div>
   </body>
