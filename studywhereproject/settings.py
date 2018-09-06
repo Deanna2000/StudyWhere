@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'studywhereapp',
 	'leaflet',
-	'leaflet-search',
 ]
 
 MIDDLEWARE = [
