@@ -3,21 +3,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Bangazon</title>
+    <title>StudyWHere</title>
   </head>
   <body>
 	{% block content %}
-	<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/styles.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/css/styles.css' %}" />
 	{% include "navbar.html" with nav_location=view.location %}
 
-    <a href="{% url 'studywhereapp:sell' %}">Sell Your Stuff!</a>
-    <h1>Products</h1>
+    <a href="{% url 'studywhereapp:sell' %}">Add a Venue!</a>
+    <h1>Venues</h1>
     {% for product in products %}
     <div>
         <a href="{% url 'studywhereapp:detail' product.pk %}">{{product.id }} {{product.title}}</a>
         <img src="{{product.image.url}}" alt="">
       </div>
-        {% endfor %}
+    {% endfor %}
 
     {% endblock %}
   </body>

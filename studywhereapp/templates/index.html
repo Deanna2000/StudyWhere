@@ -9,23 +9,19 @@
 			{% leaflet_js %}
 			{% leaflet_css %}
     <meta charset="utf-8">
-	<title>Bangazon</title>
+	<title>StudyWhere</title>
   </head>
   <body>
 
-{% block main_stuff %}
-
-
-{% endblock main_stuff %}
-    <h1>Welcome to Bangazon!</h1>
+	{% block main_stuff %}
+	{% endblock main_stuff %}
 	{% if user.is_authenticated %}
 	<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/css/styles.css' %}" />
 {% comment %} Including navbar in each template so we can pass the location to it each time {% endcomment %}
 {% include "navbar.html" with nav_location=view.location %}
-    <h1>Bangazon says... hello {{ user.username }}!</h1>
+    <h1>hello {{ user.username }}!</h1>
     <a href="{% url 'studywhereapp:logout' %}">Logout</a>
     {% else %}
-    <h1>Bangazon says...</h1>
     <div><a href="{% url 'studywhereapp:register' %}">Register</a></div>
     <div><a href="{% url 'studywhereapp:login' %}">Login</a></div>
     {% endif %}
