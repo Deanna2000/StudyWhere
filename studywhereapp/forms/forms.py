@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from django import forms
-from studywhereapp.models import Product
-from studywhereapp.models import Category
+from studywhereapp.models import Venue
 from studywhereapp.models import CustomerRegistration
 
 class UserForm(forms.ModelForm):
@@ -17,22 +16,11 @@ class CustomerForm(forms.ModelForm):
         model = CustomerRegistration
         fields = ['street', 'city', 'state', 'zip', 'phone_number']
 
-class ProductForm(forms.ModelForm):
+class VenueForm(forms.ModelForm):
 
     class Meta:
-        model = Product
+        model = Venue
         exclude = ["user"]
-        fields = ['title', 'description', 'price', 'quantity', 'date_added',
-'location', 'local_delivery', 'category_name', 'image']
+        fields = ['name', 'description', 'latitude', 'longitude', 'hours',
+'address', 'price', 'venue_rating', 'food_served', 'drinks_served', 'wifi_available', 'image']
 
-
-# class CategoryForm(forms.ModelForm):
-#     '''
-#     Category Form
-#     Author: Deanna Vickers
-#     Purpose: Create form on website app to add categories
-#     '''
-
-#     class Meta:
-#         model = Category
-#         fields = ('name',)

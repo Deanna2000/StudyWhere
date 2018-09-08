@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
-from studywhereapp.forms import UserForm, ProductForm, CustomerForm
+from studywhereapp.forms import UserForm, VenueForm, CustomerForm
 from studywhereapp.models import *
 
 def index(request):
@@ -94,43 +94,36 @@ def user_logout(request):
     # in the URL in redirects?????
     return HttpResponseRedirect('/')
 
-def list_products(request):
-    products = Product.objects.all()
-    template_name = 'product/list.html'
-    return render(request, template_name, {'products': products})
+def list_venues(request):
+    venues = Venue.objects.all()
+    template_name = 'venue/list.html'
+    return render(request, template_name, {'venues': venues})
 
-def detail_product(request, pk):
-    product = get_object_or_404(Product, pk=pk)
+def detail_venue(request, pk):
+    venue = get_object_or_404(Venue, pk=pk)
 
-    template_name = 'product/details.html'
-    return render(request, template_name, {'product': product})
+    template_name = 'venue/details.html'
+    return render(request, template_name, {'venue': venue})
 
-def sell_product(request):
+def add_venue(request):
     if request.method == 'GET':
-        product_form = ProductForm()
-        template_name = 'product/create.html'
-        return render(request, template_name, {'product_form': product_form})
+        venue_form = VenueForm()
+        template_name = 'venue/create.html'
+        return render(request, template_name, {'venue_form': venue_form})
 
     elif request.method == 'POST':
-        product_form = ProductForm(data=request.POST)
-        if product_form.is_valid():
-            product = product_form.save(commit=False)
-            product.seller = request.user
-            product.save()
-        template_name = 'product/success.html'
-        return render(request, template_name, {'sell': product})
+        venue_form = VenueForm(request.POST, request.FILES)
+        if venue_form.is_valid():
+            venue = venue_form.save(commit=False)
+            venue.student = request.user
+            venue.save()
+        template_name = 'venue/success.html'
+        return render(request, template_name, {'add': venue})
 
 @login_required
 def account_view(request):
 
     return render(request, 'account.html')
-
-
-def category_product(request):
-	categories = Category.objects.all()
-	products = Product.objects.all()
-	template_name = 'product/category.html'
-	return render(request, template_name, {'categories': categories, 'products': products})
 
 
 

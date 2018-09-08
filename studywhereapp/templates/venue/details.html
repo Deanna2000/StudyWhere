@@ -7,27 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-		<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/styles.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/css/styles.css' %}" />
 		{% include "navbar.html" with nav_location=view.location %}
 
 
 
+<div class="venueDetailView">
+	<h1>{{ venue.name }}</h1>
+		<div>
+			<p>Description {{ venue.description }}</p>
+			<p>Price {{ venue.price }}</p>
+			<p>Hours {{ venue.hours }}</p>
+			<p>Venue Rating {{ venue.venue_rating }}</p>
+			<p>Location {{ venue.location }}</p>
+			<p>Drinks Available {{ venue.drinks_available }}</p>
+			<p>Food Available {{ venue.food_available }}</p>
+		</div>
+		{% if venue.image %}
+        <img style="width: 80%" src="{{ venue.image.url }}" alt="venue image">
+		{% endif %}
+</div>
 
-    <h1>{{product.title}}</h1>
-        <p>Date Added: {{ product.date_added}}</p>
-        <p>Description: {{product.description}}</p>
-        <p>Seller: {{product.seller}}</p>
-        <p>Price: {{product.price}}</p>
-        <p>Quantity: {{product.quantity}}</p>
-        <p>Category: {{product.category_name}}</p>
-		<p>Location: {{product.location}}</p>
-        <p>Local Delivery: {{product.local_delivery}}</p>
-        <img src="{{ MEDIA_URL }} {{ product.image.url }}" alt="">
-		<button>Add to Cart</button>
-
-
-
-    <a href="{% url 'studywhereapp:products' %}">List Products</a>
 
 </body>
 </html>

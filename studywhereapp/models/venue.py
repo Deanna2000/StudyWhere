@@ -20,14 +20,14 @@ class Venue(models.Model):
     longitude = models.DecimalField(
                 max_digits=9, decimal_places=6, null=True, blank=True)
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=255)
-	address = models.CharField(max_length=255)
-    hours = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True)
+    address = models.CharField(max_length=255, blank=True)
+    hours = models.CharField(max_length=255, blank=True)
     comment = models.TextField(blank=True, null=True)
-    price = models.CharField(max_length=100)
+    price = models.CharField(max_length=100, blank=True)
     venue_rating = models.IntegerField(
            default=1,
-           validators=[MaxValueValidator(5), MinValueValidator(1)])
+           validators=[MaxValueValidator(5), MinValueValidator(1)], blank=True)
     food_served = models.BooleanField(default=False)
     drinks_served = models.BooleanField(default=False)
     wifi_available = models.BooleanField(default=False)

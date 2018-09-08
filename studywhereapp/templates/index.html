@@ -1,13 +1,11 @@
 {% load static %}
 {% load staticfiles %}
-{% load leaflet_tags %}
+{% load bootstrap3 %}
 
 
 <!DOCTYPE html>
 <html>
 	<head>
-			{% leaflet_js %}
-			{% leaflet_css %}
     <meta charset="utf-8">
 	<title>StudyWhere</title>
   </head>
@@ -19,8 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/css/styles.css' %}" />
 {% comment %} Including navbar in each template so we can pass the location to it each time {% endcomment %}
 {% include "navbar.html" with nav_location=view.location %}
-    <h1>hello {{ user.username }}!</h1>
-    <a href="{% url 'studywhereapp:logout' %}">Logout</a>
+
     {% else %}
     <div><a href="{% url 'studywhereapp:register' %}">Register</a></div>
     <div><a href="{% url 'studywhereapp:login' %}">Login</a></div>
@@ -33,7 +30,6 @@
 		</div>
 		<div>
 
-						{% leaflet_map "mymap" %}
 
 
 		</div>

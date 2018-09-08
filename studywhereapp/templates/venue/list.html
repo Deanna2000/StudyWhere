@@ -10,13 +10,16 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/css/styles.css' %}" />
 	{% include "navbar.html" with nav_location=view.location %}
 
-    <a href="{% url 'studywhereapp:sell' %}">Add a Venue!</a>
     <h1>Venues</h1>
-    {% for product in products %}
-    <div>
-        <a href="{% url 'studywhereapp:detail' product.pk %}">{{product.id }} {{product.title}}</a>
-        <img src="{{product.image.url}}" alt="">
-      </div>
+	<div class="cardContainer">
+	{% for venue in venues %}
+    	<div class="card">
+		{% if venue.image %}
+		<img  class="venueListItem" style="width:100%" src="{{venue.image.url}}" alt="venue image">
+		{% endif %}
+        <a href="{% url 'studywhereapp:detail' venue.pk %}"> {{venue.name}} {{ venue.address }}</a>
+		</div>
+	</div>
     {% endfor %}
 
     {% endblock %}
