@@ -1,2 +1,2 @@
 from .views import *
-from .product_search import *
+from .venue_search import *

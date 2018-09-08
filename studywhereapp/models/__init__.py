@@ -1,5 +1,2 @@
-from .product import *
-from .category import *
-from .order import *
-from .payment import *
+from .venue import *
 from .profile_account import *

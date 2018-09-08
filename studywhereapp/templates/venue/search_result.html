@@ -1,27 +1,28 @@
 {% load staticfiles %}
-<!-- Author: Meghan Debity || Purpose: Template for search results in user interface -->
 <html>
 <head>
     <title>Search</title>
 </head>
 <body>
-	<h1>HELLO?!?!</h1>
+		<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/css/styles.css' %}" />
+		{% include "navbar.html" with nav_location=view.location %}
 
-	{% if products|length > 0 %}
-		{% for result in products %}
-	<!-- result.xxxx is searched for product with properties included -->
-			{{ result.title}}
+	<h1>Venue Results</h1>
+
+	{% if venues|length > 0 %}
+		{% for result in venues %}
+			{{ result.name}}
 			{{ result.description }}
 			{{ result.price }}
 		{% endfor %}
-	
-	{% elif locations|length > 0 %}
-		{% for result in locations %}
-			{{ result.title}}
+
+	{% elif address|length > 0 %}
+		{% for result in address %}
+			{{ result.name}}
 			{{ result.description }}
 			{{ result.price }}
 		{% endfor %}
-			
+
 	{% else %}
 		<h3 class='error'>Please enter a valid search request</h3>
 		<form method="get" action="/search/">
@@ -29,6 +30,6 @@
 		<input type="submit" value="Search" />
 		</form>
 	{% endif %}
-    
+
 </body>
 </html>
