@@ -10,8 +10,5 @@ Set Up:
 	* pip3 install django djangorestframework
 4. Install pillow to allow for images
 	* pip install pillow
-5. Install Leaflet - a mobile-friendly map integration
-	* npm install --save django-leaflet
-6. Install Leaflet search
-	* npm install --save leaflet-search
-
+5. Install bootstrap 3
+	* pip install django-bootstrap3
