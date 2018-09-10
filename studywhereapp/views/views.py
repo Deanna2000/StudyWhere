@@ -5,10 +5,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
 from studywhereapp.forms import UserForm, VenueForm, CustomerForm
 from studywhereapp.models import *
+from django.conf import settings
 
-def index(request):
-    template_name = 'index.html'
-    return render(request, template_name, {})
+# def index(request):
+#     template_name = 'index.html'
+#     return render(request, template_name, {})
 
 
 # Create your views here.
@@ -126,6 +127,17 @@ def account_view(request):
     return render(request, 'account.html')
 
 
+
+
+# Create your views here.
+
+def index(request):
+  """ Import Google API Key & Creates Initial Homepage View """
+  api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY')
+  context = {
+    'api_key': api_key
+  }
+  return render(request, 'index.html', context)
 
 
 

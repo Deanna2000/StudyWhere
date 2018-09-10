@@ -126,3 +126,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'image/')
 
 MEDIA_URL = '/image/'
 
+GOOGLE_MAPS_API_KEY = 'AIzaSyChjXW87qz1LoRM5h_hJXOdVZC5JN7a0DY'
