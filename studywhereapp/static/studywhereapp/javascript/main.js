@@ -8,3 +8,14 @@ function initMap() {
 	// The marker, positioned at Nashville, TN
 	const marker = new google.maps.Marker({position: nashville, map: map});
   }
+
+handleSearchMap = (evt) => {
+		initialize()
+    }
+
+  function initialize() {
+	  console.log("here in the initialize function")
+	var input = document.getElementById('locationTextField');
+	new google.maps.places.Autocomplete(input);
+	google.maps.event.addDomListener(window, 'load', initialize)
+  }
