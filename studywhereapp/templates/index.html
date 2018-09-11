@@ -3,12 +3,14 @@
 {% load bootstrap3 %}
 
 
+
 <!DOCTYPE html>
 <html>
 	<head>
 	<meta charset="utf-8">
 
 	<title>StudyWhere</title>
+	{{ form.media }}
 	<style>
 		/* Set the size of the div element that contains the map */
 		#map {
@@ -50,7 +52,8 @@
 		</div>
       </div>
 	</div>
-	<script type="text/javascript" async src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&libraries=places&callback=initMap"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&libraries=places&callback=initMap"
+	async defer></script>
 	<script src="{% static 'studywhereapp/javascript/main.js' %}"></script>
 
 </body>

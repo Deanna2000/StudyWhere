@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'studywhereapp',
 	'bootstrap3',
+	'mapwidgets'
 ]
 
 MIDDLEWARE = [
@@ -116,6 +117,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+# MAP_WIDGETS = {
+# "GooglePointFieldWidget": (
+# ("zoom", 15),
+# ("mapCenterLocation", [{36.174465, -86.767960}]),
+# ),
+# }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

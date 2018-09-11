@@ -10,6 +10,7 @@ function initMap() {
   }
 
 handleSearchMap = (evt) => {
+	console.log("i'm here")
 		initialize()
     }
 
