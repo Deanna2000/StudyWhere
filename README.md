@@ -9,18 +9,13 @@ Set Up:
 3. Install django/djangorest
 	* pip3 install django djangorestframework
 4. Clone the project into the project folder
-5. Install pillow to allow for images
+5. Install bootstrap 3
+	* pip install django-bootstrap3
+6. Install pillow to allow for images
 	* pip install pillow
-6. Install Google Map Package
+7. Install Google Map Package
 	* pip install django-google-maps (add it to settings.py installed apps)
-7. Install Map Widgets (search bar, markers)
-	* pip install django-map-widgets (add it to settings.py installed apps)
-	* [docs](https://media.readthedocs.org/pdf/django-map-widgets/latest/django-map-widgets.pdf)
-8. Install Bootstrap
-	* pip install react-bootstrap3 (add it to settings.py installed apps)
-9. Install additional map/geo stuff:
-	* brew install gdal geos
-	* brew install proj
+
 
 The first time you use the app or if you make any changes to the models:
 	python manage.py makemigrations
@@ -29,4 +24,6 @@ The first time you use the app or if you make any changes to the models:
 
 To see the app in the browser:
 	python manage.py runserver
+
+
 
