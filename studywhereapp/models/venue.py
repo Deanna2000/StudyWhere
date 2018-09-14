@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-# from django_google_maps import fields as map_fields
+from django_google_maps import fields as map_fields
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
@@ -13,15 +13,18 @@ class Venue(models.Model):
         User,
         on_delete=models.CASCADE
     )
-    # mapaddress = map_fields.AddressField(max_length=200)
-    # geolocation = map_fields.GeoLocationField(max_length=100)
-    latitude = models.DecimalField(
-                max_digits=9, decimal_places=6, null=True, blank=True)
-    longitude = models.DecimalField(
-                max_digits=9, decimal_places=6, null=True, blank=True)
+    address = map_fields.AddressField(max_length=200)
+    geolocation = map_fields.GeoLocationField(max_length=100)
+    latitude = models.FloatField(
+     null=True,
+        blank=True
+    )
+    longitude = models.FloatField(
+        null=True,
+        blank=True
+    )
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=255, blank=True)
-    address = models.CharField(max_length=255, blank=True)
     hours = models.CharField(max_length=255, blank=True)
     comment = models.TextField(blank=True, null=True)
     price = models.CharField(max_length=100, blank=True)

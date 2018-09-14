@@ -3,37 +3,83 @@
 {% load bootstrap3 %}
 
 
+
 <!DOCTYPE html>
 <html>
 	<head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
+
 	<title>StudyWhere</title>
+	<!-- {{ form.media }} -->
+	<style>
+		/* Set the size of the div element that contains the map */
+		#map {
+		  height: 100vh;  /* The height is 400 pixels */
+		/* The width is the width of the web page */
+		 }
+		 /* Optional: Makes the sample page fill the window. */
+		html, body {
+		  height: 100vh;
+		  margin: 0;
+		  padding: 0;
+		}
+	  </style>
   </head>
   <body>
 
-	{% block main_stuff %}
-	{% endblock main_stuff %}
+
+	{% block nav %}
+
 	{% if user.is_authenticated %}
 	<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/css/styles.css' %}" />
-{% comment %} Including navbar in each template so we can pass the location to it each time {% endcomment %}
-{% include "navbar.html" with nav_location=view.location %}
+	{% comment %} Including navbar in each template so we can pass the location to it each time {% endcomment %}
+	{% include "navbar.html" with nav_location=view.location %}
 
     {% else %}
     <div><a href="{% url 'studywhereapp:register' %}">Register</a></div>
     <div><a href="{% url 'studywhereapp:login' %}">Login</a></div>
-    {% endif %}
+	{% endif %}
+
+	{% endblock nav %}
+
+	{% block main_stuff %}
+	{% endblock main_stuff %}
+
+	{% block map %}
+	<div id="map"></div>
+	{% endblock map %}
+
+	{% block scripts %}
+	<script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&libraries=places&callback=initMap"
+	async defer type="text/javascript"></script>
+	<script src="{% static 'studywhereapp/javascript/main.js' %}"></script>
+	{% endblock scripts%}
+
+
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
           {% block content %}
-          {% endblock content %}
+		  {% endblock content %}
+		  <form method="POST" action="">
+			{% csrf_token %}
+			{{form.media}}
+			{{form.as_p}}
+		</form>
+		  <label for="locationTextField">Search</label>
+			<input onclick=handleSearchMap id="locationTextField" type="text" size="50">
+			<button onclick="handleAddVenueMarker()" id="addVenueMarker" >Add New Venue</button>
+		  <!--The div element for the map -->
+		  <!-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		</div> -->
+
 		</div>
+
 		<div>
-
-
-
 		</div>
       </div>
-    </div>
-  </body>
+	</div>
+
+
+</body>
 </html>

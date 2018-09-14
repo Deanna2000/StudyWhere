@@ -1,14 +1,18 @@
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponse, HttpResponseRedirect, Http404, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
 from studywhereapp.forms import UserForm, VenueForm, CustomerForm
 from studywhereapp.models import *
+from django.conf import settings
+import json
 
-def index(request):
-    template_name = 'index.html'
-    return render(request, template_name, {})
+
+
+# def index(request):
+#     template_name = 'index.html'
+#     return render(request, template_name, {})
 
 
 # Create your views here.
@@ -99,6 +103,11 @@ def list_venues(request):
     template_name = 'venue/list.html'
     return render(request, template_name, {'venues': venues})
 
+def get_all_venues(request):
+    venues = Venue.objects.all().values("latitude", "longitude")
+    json_result = json.dumps(list(venues))
+    return JsonResponse({"results": json_result}, safe=False)
+
 def detail_venue(request, pk):
     venue = get_object_or_404(Venue, pk=pk)
 
@@ -125,6 +134,18 @@ def account_view(request):
 
     return render(request, 'account.html')
 
+
+
+
+# Create your views here.
+
+def index(request):
+  """ Import Google API Key & Creates Initial Homepage View """
+  api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY')
+  context = {
+    'api_key': api_key
+  }
+  return render(request, 'index.html', context)
 
 
 

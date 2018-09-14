@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^search_form/$', views.search_form, name='search_form'),
     url(r'^search/$', views.search, name='search'),
     url(r'venues/', views.list_venues, name='venues'),
+    url(r'^get_venues$', views.get_all_venues, name='all_venues'),
     url(r'^detail/(?P<pk>\d+)/$', views.detail_venue, name='detail'),
     url(r'^account/$', views.account_view, name='account'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -9,3 +9,4 @@ obj
 *.sqlite3
 migrations
 env
+settings.py

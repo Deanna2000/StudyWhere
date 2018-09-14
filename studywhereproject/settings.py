@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	'django.contrib.gis',
+	'django.contrib.gis.geos',
+	'django.contrib.gis.db',
     'studywhereapp',
 	'bootstrap3',
+	'django_google_maps'
 ]
 
 MIDDLEWARE = [
@@ -83,6 +88,7 @@ DATABASES = {
     }
 }
 
+# SPATIALITE_LIBRARY_PATH='/usr/local/lib/mod_spatialite.dylib'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -125,4 +131,6 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'image/')
 
 MEDIA_URL = '/image/'
+
+GOOGLE_MAPS_API_KEY = 'AIzaSyChjXW87qz1LoRM5h_hJXOdVZC5JN7a0DY'
 

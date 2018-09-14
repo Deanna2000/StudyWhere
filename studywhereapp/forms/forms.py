@@ -3,6 +3,7 @@ from django import forms
 from studywhereapp.models import Venue
 from studywhereapp.models import CustomerRegistration
 
+
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
 
@@ -23,4 +24,5 @@ class VenueForm(forms.ModelForm):
         exclude = ["user"]
         fields = ['name', 'description', 'latitude', 'longitude', 'hours',
 'address', 'price', 'venue_rating', 'food_served', 'drinks_served', 'wifi_available', 'image']
+
 
