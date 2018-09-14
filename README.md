@@ -18,12 +18,11 @@ Set Up:
 	* [docs](https://media.readthedocs.org/pdf/django-map-widgets/latest/django-map-widgets.pdf)
 8. Install Bootstrap
 	* pip install react-bootstrap3 (add it to settings.py installed apps)
-
-If you don't already have these:
+9. Install additional map/geo stuff:
 	* brew install gdal geos
 	* brew install proj
 
-The first time you use the app:
+The first time you use the app or if you make any changes to the models:
 	python manage.py makemigrations
 	and then
 	python manage.py migrate
