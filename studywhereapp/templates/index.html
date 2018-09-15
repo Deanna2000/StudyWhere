@@ -45,6 +45,8 @@
 	{% block main_stuff %}
 	{% endblock main_stuff %}
 
+	  <button onclick="handleAddVenueMarker()" id="addVenueMarker" >Add New Venue</button>
+
 	{% block map %}
 	<div id="map"></div>
 	{% endblock map %}
@@ -59,16 +61,13 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-          {% block content %}
-		  {% endblock content %}
-		  <form method="POST" action="">
+          <!-- {% block content %}
+		  {% endblock content %} -->
+		  <!-- <form method="POST" action="">
 			{% csrf_token %}
 			{{form.media}}
 			{{form.as_p}}
-		</form>
-		  <label for="locationTextField">Search</label>
-			<input onclick=handleSearchMap id="locationTextField" type="text" size="50">
-			<button onclick="handleAddVenueMarker()" id="addVenueMarker" >Add New Venue</button>
+		</form> -->
 		  <!--The div element for the map -->
 		  <!-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		</div> -->

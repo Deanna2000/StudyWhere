@@ -17,6 +17,7 @@
 		{% if venue.image %}
 		<img  class="venueListItem" style="width:100%" src="{{venue.image.url}}" alt="venue image">
 		{% endif %}
+		<a href="{% url 'studywhereapp:detail' venue.pk %}">Comments: {{ venue.comments.count }}</a>
         <a href="{% url 'studywhereapp:detail' venue.pk %}"> {{venue.name}} {{ venue.address }}</a>
 		</div>
 	</div>

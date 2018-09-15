@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django import forms
-from studywhereapp.models import Venue
+from studywhereapp.models import Venue, Comment
 from studywhereapp.models import CustomerRegistration
 
 
@@ -25,4 +25,8 @@ class VenueForm(forms.ModelForm):
         fields = ['name', 'description', 'latitude', 'longitude', 'hours',
 'address', 'price', 'venue_rating', 'food_served', 'drinks_served', 'wifi_available', 'image']
 
+class CommentForm(forms.ModelForm):
 
+    class Meta:
+        model = Comment
+        fields = ('author', 'text',)

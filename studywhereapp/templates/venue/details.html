@@ -1,19 +1,20 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 </head>
+
 <body>
-		<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/css/styles.css' %}" />
-		{% include "navbar.html" with nav_location=view.location %}
+	<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/css/styles.css' %}" /> {% include "navbar.html" with nav_location=view.location %}
 
 
 
-<div class="venueDetailView">
-	<h1>{{ venue.name }}</h1>
+	<div class="venueDetailView">
+		<h1>{{ venue.name }}</h1>
 		<div>
 			<p>Description {{ venue.description }}</p>
 			<p>Price {{ venue.price }}</p>
@@ -24,10 +25,23 @@
 			<p>Food Available {{ venue.food_available }}</p>
 		</div>
 		{% if venue.image %}
-        <img style="width: 80%" src="{{ venue.image.url }}" alt="venue image">
+		<img style="width: 80%" src="{{ venue.image.url }}" alt="venue image">
 		{% endif %}
-</div>
+
+	</div>
+	<hr>
+	<a class="btn btn-default" href="{% url 'studywhereapp:add_comment_to_venue' pk=venue.pk %}">Add comment</a>
+	{% for comment in venue.comments.all %}
+	<div class="comment">
+		<div class="date">{{ comment.created_date }}</div>
+		<strong>{{ comment.author }}</strong>
+		<p>{{ comment.text|linebreaks }}</p>
+	</div>
+	{% empty %}
+	<p>No comments here yet :(</p>
+	{% endfor %}
 
 
 </body>
+
 </html>

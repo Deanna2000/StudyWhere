@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
-from studywhereapp.forms import UserForm, VenueForm, CustomerForm
+from studywhereapp.forms import UserForm, VenueForm, CustomerForm, CommentForm
 from studywhereapp.models import *
 from django.conf import settings
 import json
@@ -148,7 +148,22 @@ def index(request):
   return render(request, 'index.html', context)
 
 
+# def add_comment_to_venue(request, pk):
+#     venue = Venue.objects.get(pk=pk)
+#     if request.method == "POST":
+#         form = CommentForm(request.POST)
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             comment.venue = venue
+#             comment.save()
+#             return redirect('venue_detail', pk=venue.pk)
+#     else:
+#         form = CommentForm()
+#     return render(request, 'venue/add_comment_to_venue.html', {'CommentForm': form})
 
+def display_add_comment_form(request, pk):
+    form = CommentForm()
+    return render(request, 'venue/add_comment_to_venue.html', {'CommentForm': form, 'pk': pk})
 
 
 

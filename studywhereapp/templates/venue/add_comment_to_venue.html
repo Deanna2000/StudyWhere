@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+		<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/css/styles.css' %}" /> {% include "navbar.html" with nav_location=view.location %}
+
+<!-- {% block content %} -->
+    <h1>New comment</h1>
+    <form method="POST" class="venue-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Send</button>
+    </form>
+<!-- {% endblock %} -->
+</body>
+</html>

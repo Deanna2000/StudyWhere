@@ -1,7 +1,8 @@
 {% load bootstrap3 %}
+{% load static %}
 
 <nav>
-	<p>hello {{ user.username }}!</p>
+
 
 	{% if nav_location != 'index' %}
 	<a><form action="/" method='get'>
@@ -23,7 +24,7 @@
 
 	{% if nav_location != 'add' %}
 	  <form action="/add" method='get'>
-		<input type="submit" value="Add a Venue">
+		<input onclick="handleAddVenueMarker()" type="submit" value="Add a Venue">
 	  </form>
 	{% endif %}
 
@@ -39,6 +40,8 @@
 		<input type="submit" value="Search">
 	</form></a>
 	{% endif %}
+
+	<p>hello {{ user.username }}!</p>
 
 	<a href="{% url 'studywhereapp:logout' %}">Logout</a>
 
