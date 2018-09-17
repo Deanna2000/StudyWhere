@@ -31,21 +31,28 @@ function initMap() {
 					type: 'poly'
 				  };
 
-				new google.maps.Marker({
+				var marker = new google.maps.Marker({
 					position: { "lat": marker.latitude, "lng": marker.longitude  },
 					map: map,
 					draggable: false,
 					// icon: bookMarker,
 					// shape: shape,
 				});
-				google.maps.event.addListener(marker, 'click', function (event) {
-					alert("you clicked on it")
-					// open venue detail
+				marker.addListener('click', function (event) {
+					console.log("you clicked it")
+					lat = marker.getPosition().lat();
+					long = marker.getPosition().lng();
+					console.log({lat})
+					console.log({long})
+					//query lat and long
+					//get venue detail number associated
+     					// open venue detail
+					// location.href = "/detail/";
 				});
-				google.maps.event.addListener(marker, 'mouseover', function (event) {
-					// highlight marker
-					// open venue small detail
-				});
+				// google.maps.event.addListener(marker, 'mouseover', function (event) {
+				// 	// highlight marker
+				// 	// open venue small detail
+				// });
 
 			});
 		})

@@ -26,7 +26,6 @@ class Venue(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=255, blank=True)
     hours = models.CharField(max_length=255, blank=True)
-    # comments = models.TextField(blank=True, null=True)
     price = models.CharField(max_length=100, blank=True)
     venue_rating = models.IntegerField(
            default=1,

@@ -146,10 +146,6 @@ def account_view(request):
     return render(request, 'account.html')
 
 
-
-
-# Create your views here.
-
 def index(request):
   """ Import Google API Key & Creates Initial Homepage View """
   api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY')
@@ -157,3 +153,17 @@ def index(request):
     'api_key': api_key
   }
   return render(request, 'index.html', context)
+
+
+def venue_edit(request, pk):
+    venue = get_object_or_404(Venue, pk=pk)
+    if request.method == "POST":
+        form = VenueForm(request.POST, instance=post)
+        if form.is_valid():
+            venue = form.save(commit=False)
+            venue.student = request.user
+            venue.save()
+            return redirect('venue_detail', pk=venue.pk)
+    else:
+        form = VenueForm(instance=post)
+    return render(request, 'studywhereapp/create.html', {'form': form})

@@ -14,9 +14,9 @@
 	</div>
 {% endblock main_stuff %}
 
-	{% block google_scripts %}
+{% block google_scripts %}
 	<script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&libraries=places&callback=handleAddVenueMarker"
 	async defer type="text/javascript"></script>
 	<script src="{% static 'studywhereapp/javascript/main.js' %}"></script>
-	{% endblock google_scripts %}
+{% endblock google_scripts %}
 

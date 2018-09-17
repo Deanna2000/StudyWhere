@@ -1,25 +1,14 @@
+{% extends 'index.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/css/styles.css' %}" />
-    <title>Document</title>
-</head>
-<body>
+{% load bootstrap3 %}
 
-    {% include "navbar.html" with nav_location=view.location %}
-
-    {% block account %}
+{% block main_stuff %}
+<div class="floating-panel profile">
     <h2>Username: {{ user.username }}</h2>
     <h2>Email: {{user.email}}</h2>
     <h2>First Name: {{ user.first_name }}</h2>
     <h2>Last Name: {{ user.last_name }}</h2>
     <h2>Phone Number: {{ user.customer.phone }}</h2>
     <h2>Address: {{ user.customer.street }} {{user.customer.city}}, {{user.customer.state}} {{user.customer.zip}}</h2>
-
-    {% endblock account %}
-</body>
-</html>
+</div>
+{% endblock main_stuff %}
