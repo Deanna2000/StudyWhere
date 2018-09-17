@@ -45,37 +45,16 @@
 	{% block main_stuff %}
 	{% endblock main_stuff %}
 
-	  <button onclick="handleAddVenueMarker()" id="addVenueMarker" >Add New Venue</button>
 
 	{% block map %}
 	<div id="map"></div>
 	{% endblock map %}
 
-	{% block scripts %}
+	{% block google_scripts %}
 	<script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&libraries=places&callback=initMap"
 	async defer type="text/javascript"></script>
 	<script src="{% static 'studywhereapp/javascript/main.js' %}"></script>
-	{% endblock scripts%}
-
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <!-- {% block content %}
-		  {% endblock content %} -->
-		  <!-- <form method="POST" action="">
-			{% csrf_token %}
-			{{form.media}}
-			{{form.as_p}}
-		</form> -->
-
-
-		</div>
-
-		<div>
-		</div>
-      </div>
-	</div>
+	{% endblock google_scripts%}
 
 
 </body>
