@@ -1,28 +1,20 @@
+{% extends 'index.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>StudyWHere</title>
-  </head>
-  <body>
-	{% block content %}
-	<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/css/styles.css' %}" />
-	{% include "navbar.html" with nav_location=view.location %}
+{% load bootstrap3 %}
+
+	{% block main_stuff %}
 
     <h1>Venues</h1>
 	<div class="cardContainer">
-	{% for venue in venues %}
+		{% for venue in venues %}
     	<div class="card">
 		{% if venue.image %}
 		<img  class="venueListItem" style="width:100%" src="{{venue.image.url}}" alt="venue image">
 		{% endif %}
+		<a href="{% url 'studywhereapp:detail' venue.pk %}">Comments: {{ venue.comments.count }}</a>
         <a href="{% url 'studywhereapp:detail' venue.pk %}"> {{venue.name}} {{ venue.address }}</a>
 		</div>
 	</div>
     {% endfor %}
 
-    {% endblock %}
-  </body>
-</html>
-
+    {% endblock main_stuff%}

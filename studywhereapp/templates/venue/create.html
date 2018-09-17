@@ -4,13 +4,13 @@
 
 
 
-{% block main_stuff%}
+{% block main_stuff %}
     <h1>Add a New Venue</h1>
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ venue_form.as_p }}
       <input type="submit" value="Add It" />
     </form>
-{% endblock main_stuff%}
+{% endblock main_stuff %}
 
 
