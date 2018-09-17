@@ -22,8 +22,8 @@ class VenueForm(forms.ModelForm):
     class Meta:
         model = Venue
         exclude = ["user"]
-        fields = ['name', 'description', 'latitude', 'longitude', 'hours',
-'address', 'price', 'venue_rating', 'food_served', 'drinks_served', 'wifi_available', 'image']
+        fields = ['name', 'description', 'hours',
+ 'price', 'venue_rating', 'food_served', 'drinks_served', 'wifi_available', 'image', 'address','latitude', 'longitude']
 
 class CommentForm(forms.ModelForm):
 

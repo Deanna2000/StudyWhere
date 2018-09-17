@@ -5,44 +5,45 @@
 
 
 	{% if nav_location != 'index' %}
-	<a><form action="/" method='get'>
-		<input type="submit" value="Home">
-	</form></a>
+	<a href="/">
+		<image class="swlogo" src="../../image/appimages/studywherelogo.png" type="submit">
+	</a>
 	{% endif %}
 
-	{% if nav_location != 'my_orders' %}
+	<!-- {% if nav_location != 'favorites' %}
 	<a><form action="" method='get'>
-		<input type="submit" value="My Orders">
+		<input type="submit" value="Favorites">
 	  </form></a>
-	{% endif %}
+	{% endif %} -->
 
-	{% if nav_location != 'list_products' %}
-	  <form action="/venues" method='get'>
-		<input type="submit" value="Venues">
+	<!-- {% if nav_location != 'list_venues' %}
+	  <form  action="/venues" method='get'>
+		<input class="list_venues" type="submit" value="Venues">
 	  </form>
-	{% endif %}
+	{% endif %} -->
 
 	{% if nav_location != 'add' %}
 	  <form action="/add" method='get' >
-		<input type="submit" value="Add a Venue">
+		<input class="add_venue" type="submit" value="Add a Study Place">
 	  </form>
 	{% endif %}
 
-	{% if nav_location != 'profile' %}
-	  <form >
-		<input type="submit" value="Profile">
-	  </form>
-	{% endif %}
 
 	{% if nav_location != 'index' %}
 	<a> <form action="/search/" method="get">
-		<input type="text" name="q" value="{{ query }}">
+		<input class="search_box" type="text" name="q" value="{{ query }}">
 		<input type="submit" value="Search">
 	</form></a>
 	{% endif %}
 
-	<p>hello {{ user.username }}!</p>
-
-	<a href="{% url 'studywhereapp:logout' %}">Logout</a>
+	<div class="dropdown">
+		<button class="dropbtn">Welcome {{ user.username }}!
+			<i class="fa fa-caret-down"></i>
+		</button>
+		<div class="dropdown-content">
+			<a href="/account">Profile</a>
+			<a href="{% url 'studywhereapp:logout' %}">Logout</a>
+		</div>
+	</div>
 
   </nav>
