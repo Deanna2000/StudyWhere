@@ -23,13 +23,13 @@
 	{% endif %}
 
 	{% if nav_location != 'add' %}
-	  <form action="/add" method='get'>
-		<input onclick="handleAddVenueMarker()" type="submit" value="Add a Venue">
+	  <form action="/add" method='get' >
+		<input onclick="handleAddVenueMarker()" id="addVenueMarker" type="submit" value="Add a Venue">
 	  </form>
 	{% endif %}
 
 	{% if nav_location != 'profile' %}
-	  <form action="/account" method='get'>
+	  <form >
 		<input type="submit" value="Profile">
 	  </form>
 	{% endif %}

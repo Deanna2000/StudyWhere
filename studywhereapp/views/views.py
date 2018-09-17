@@ -109,16 +109,27 @@ def get_all_venues(request):
     return JsonResponse({"results": json_result}, safe=False)
 
 def detail_venue(request, pk):
-    venue = get_object_or_404(Venue, pk=pk)
+	venue = get_object_or_404(Venue, pk=pk)
+	if request.method == 'GET':
+		form = CommentForm()
+		template_name = 'venue/details.html'
+		return render(request, template_name, {'venue': venue, 'form': form})
 
-    template_name = 'venue/details.html'
-    return render(request, template_name, {'venue': venue})
+	elif request.method == 'POST':
+		form = CommentForm(request.POST, request.FILES)
+	if form.is_valid():
+			comment = form.save(commit=False)
+			comment.venue = venue
+			comment.author = request.user
+			comment.save()
+			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def add_venue(request):
     if request.method == 'GET':
         venue_form = VenueForm()
         template_name = 'venue/create.html'
         return render(request, template_name, {'venue_form': venue_form})
+
 
     elif request.method == 'POST':
         venue_form = VenueForm(request.POST, request.FILES)
@@ -146,26 +157,3 @@ def index(request):
     'api_key': api_key
   }
   return render(request, 'index.html', context)
-
-
-# def add_comment_to_venue(request, pk):
-#     venue = Venue.objects.get(pk=pk)
-#     if request.method == "POST":
-#         form = CommentForm(request.POST)
-#         if form.is_valid():
-#             comment = form.save(commit=False)
-#             comment.venue = venue
-#             comment.save()
-#             return redirect('venue_detail', pk=venue.pk)
-#     else:
-#         form = CommentForm()
-#     return render(request, 'venue/add_comment_to_venue.html', {'CommentForm': form})
-
-def display_add_comment_form(request, pk):
-    form = CommentForm()
-    return render(request, 'venue/add_comment_to_venue.html', {'CommentForm': form, 'pk': pk})
-
-
-
-
-
