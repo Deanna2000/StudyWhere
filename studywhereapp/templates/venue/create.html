@@ -10,7 +10,12 @@
       {% csrf_token %}
       {{ venue_form.as_p }}
       <input type="submit" value="Add It" />
-    </form>
-{% endblock main_stuff %}
+	</form>
+	{% endblock main_stuff %}
 
+	{% block google_scripts %}
+	<script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&libraries=places&callback=handleAddVenueMarker"
+	async defer type="text/javascript"></script>
+	<script src="{% static 'studywhereapp/javascript/main.js' %}"></script>
+	{% endblock google_scripts %}
 
