@@ -1,5 +1,5 @@
 body {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Arapey', serif;
 	background-color: rgb(246, 247, 233);
 
 }
@@ -7,7 +7,14 @@ body {
 nav {
 	display: flex;
 	flex-flow: row;
-	justify-content: flex-start;
+	justify-content: space-evenly;
+	background-color: #D8D8D8;
+	padding: 5px;
+	font-family: 'Arapey', serif;
+}
+
+nav > a {
+	font-family: 'Arapey', serif;
 }
 
 .card {
@@ -30,11 +37,122 @@ nav {
 }
 
 .venueDetailView {
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-	height: 500px;
-	width: 80%;
+	width: 300px;
+	background-color: #85B9BD !important;
+	color: white;
+	overflow: hidden;
+}
+
+.venueDetailView > h1 {
+	color: white !important;
 }
 
 .comment {
     margin: 20px 0px 20px 20px;
+}
+
+
+
+.floating-panel {
+	position: absolute;
+	top: 13%;
+	left: 10%;
+	z-index: 5;
+	background-color: rgba(216,216,216,.88);
+	padding: 5px;
+	border: 1px solid #999;
+	text-align: left;
+	line-height: 20px;
+	font-size: .7em;
+	padding-left: 10px;
+  }
+
+  /* .floating-panel > p > input {
+	  border: solid black 2px;
+  } */
+
+  .floating-panel > h1 {
+	  color: #85B9BD;
+	  font-size: 1.7em;
+      font-family: Arapey, serif;
+      font-weight: 500;
+  }
+
+  .swlogo {
+	  height: 40px;
+  }
+
+
+/* Dropdown container - needed to position the dropdown content */
+.dropdown {
+	overflow: hidden;
+	margin-top: 10px;
+}
+
+/* Style the dropdown button to fit inside the topnav */
+.dropdown .dropbtn {
+    font-size: 1.2em;
+    border: none;
+    outline: none;
+	color: #9874BA;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+    float: none;
+	color: #9B9B9B;
+    text-decoration: none;
+    display: flex;
+    text-align: right;
+}
+
+/* Add a dark background on topnav links and the dropdown button on hover */
+.topnav a:hover, .dropdown:hover .dropbtn {
+    background-color: #555;
+    color: 9874BA;
+}
+
+/* Add a grey background to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #9874BA;
+    color: black;
+}
+
+/* Show the dropdown menu when the user moves the mouse over the dropdown button */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.list_venues {
+	margin-left: 20px;
+}
+
+.add_venue {
+	border: none;
+	outline: none;
+	color: #85B9BD;
+	font-family: 'Arapey', serif;
+	background-color: rgb(216,216,216);
+	font-size: 1.2em;
+	margin-top: 10px;
+}
+
+.search_box {
+	background-color: #9874BA;
+	margin-top: 10px;
+	width: 200px;
+	height: 20px;
 }

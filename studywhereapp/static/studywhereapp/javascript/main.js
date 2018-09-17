@@ -37,7 +37,16 @@ function initMap() {
 					draggable: false,
 					// icon: bookMarker,
 					// shape: shape,
-				})
+				});
+				google.maps.event.addListener(marker, 'click', function (event) {
+					alert("you clicked on it")
+					// open venue detail
+				});
+				google.maps.event.addListener(marker, 'mouseover', function (event) {
+					// highlight marker
+					// open venue small detail
+				});
+
 			});
 		})
 }

@@ -1,5 +1,8 @@
-{% extends 'index.html' %} {% load staticfiles %} {% load bootstrap3 %} {% block main_stuff %}
-<div class="venueDetailView">
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block main_stuff %}
+<div class="venueDetailView floating-panel">
 	<h1>{{ venue.name }}</h1>
 	<div>
 		<p>Description {{ venue.description }}</p>
@@ -11,12 +14,11 @@
 		<p>Food Available {{ venue.food_available }}</p>
 	</div>
 	{% if venue.image %}
-	<img style="width: 80%" src="{{ venue.image.url }}" alt="venue image"> {% endif %}
+	<img style="width: 25%" src="{{ venue.image.url }}" alt="venue image"> {% endif %}
 
-</div>
 <hr>
 
-<h1>New comment</h1>
+<h1>Add a Comment</h1>
 <form method="post" >
 	{% csrf_token %}
 	{{ form.as_p }}
@@ -28,4 +30,7 @@
 	<strong>{{ comment.author }}</strong>
 	<p>{{ comment.text|linebreaks }}</p>
 </div>
-{% empty %} {% endfor %} {% endblock main_stuff %}
+{% empty %}
+{% endfor %}
+</div>
+{% endblock main_stuff %}
