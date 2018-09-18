@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django import forms
 from studywhereapp.models import Venue, Comment
-from studywhereapp.models import CustomerRegistration
+from studywhereapp.models import StudentRegistration
 
 
 class UserForm(forms.ModelForm):
@@ -11,10 +11,10 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email', 'password', 'first_name', 'last_name',)
 
-class CustomerForm(forms.ModelForm):
+class StudentForm(forms.ModelForm):
 
     class Meta:
-        model = CustomerRegistration
+        model = StudentRegistration
         fields = ['street', 'city', 'state', 'zip', 'phone_number']
 
 class VenueForm(forms.ModelForm):

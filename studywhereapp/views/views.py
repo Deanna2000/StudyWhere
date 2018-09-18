@@ -3,9 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
-from studywhereapp.forms import UserForm, VenueForm, CustomerForm, CommentForm
+from studywhereapp.forms import UserForm, VenueForm, StudentForm, CommentForm
 from studywhereapp.models import *
 from django.conf import settings
+from django.views.generic.edit import UpdateView
 import json
 
 
@@ -31,14 +32,14 @@ def register(request):
     # on Django's built-in User model
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
-        customer_form = CustomerForm(data=request.POST)
+        student_form = StudentForm(data=request.POST)
 
         if user_form.is_valid():
             # Save the user's form data to the database.
             user = user_form.save()
-            customer = customer_form.save(commit=False)
-            customer.user = user
-            customer.save()
+            student = student_form.save(commit=False)
+            student.user = user
+            student.save()
             # Now we hash the password with the set_password method.
             # Once hashed, we can update the user object.
             user.set_password(user.password)
@@ -51,11 +52,10 @@ def register(request):
 
     elif request.method == 'GET':
         user_form = UserForm()
-        customer_form = CustomerForm()
+        student_form = StudentForm()
         template_name = 'register.html'
-        return render(request, template_name, {'user_form': user_form, 'customer_form': customer_form})
+        return render(request, template_name, {'user_form': user_form, 'student_form': student_form})
 
-# pass profile form through render as well. one visible form, 2 under the hood
 
 def login_user(request):
     '''Handles the creation of a new user for authentication
@@ -130,7 +130,6 @@ def add_venue(request):
         template_name = 'venue/create.html'
         return render(request, template_name, {'venue_form': venue_form})
 
-
     elif request.method == 'POST':
         venue_form = VenueForm(request.POST, request.FILES)
         if venue_form.is_valid():
@@ -153,17 +152,3 @@ def index(request):
     'api_key': api_key
   }
   return render(request, 'index.html', context)
-
-
-def venue_edit(request, pk):
-    venue = get_object_or_404(Venue, pk=pk)
-    if request.method == "POST":
-        form = VenueForm(request.POST, instance=post)
-        if form.is_valid():
-            venue = form.save(commit=False)
-            venue.student = request.user
-            venue.save()
-            return redirect('venue_detail', pk=venue.pk)
-    else:
-        form = VenueForm(instance=post)
-    return render(request, 'studywhereapp/create.html', {'form': form})

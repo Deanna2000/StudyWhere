@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>StudyWhere</title>
-    </head>
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
 
-    <body>
+	{% block main_stuff %}
+	<div class="login-form-container floating-panel">
         <h1>Login to StudyWhere</h1>
 
         <form id="login_form" method="post" action="{% url 'studywhereapp:login' %}">
@@ -16,6 +15,5 @@
 
             <input type="submit" value="submit" />
         </form>
-
-    </body>
-</html>
+	</div>
+	{% endblock main_stuff %}

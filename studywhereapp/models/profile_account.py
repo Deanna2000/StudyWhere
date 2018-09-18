@@ -2,11 +2,9 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-
-class CustomerRegistration(models.Model):
+class StudentRegistration(models.Model):
 	'''
-	Author: Meghan Debity
-	Purpose: Model for buying and selling user(s)
+	Purpose: Additional fields for users registering on studywhere
 	'''
 	street = models.CharField(max_length=30)
 	city = models.CharField(max_length=30)
@@ -19,4 +17,4 @@ class CustomerRegistration(models.Model):
 		return self.username
 
 	class Meta:
-		db_table = "customer"
+		db_table = "students"

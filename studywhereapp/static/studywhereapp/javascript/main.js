@@ -15,7 +15,7 @@ function initMap() {
 			const markers = JSON.parse(myjson.results)
 			markers.forEach((marker) => {
 				const bookMarker = {
-					url: 'https://drive.google.com/open?id=1QkMfR7uRlQhfRA0KcAeOOc1bvJY0BU3r',
+					url: 'https://imgur.com/a/QPn8G04',
 					// This marker is 20 pixels wide by 34 pixels high.
 					size: new google.maps.Size(20, 34),
 					// The origin for this image is (0, 0).
@@ -35,8 +35,8 @@ function initMap() {
 					position: { "lat": marker.latitude, "lng": marker.longitude  },
 					map: map,
 					draggable: false,
-					// icon: bookMarker,
-					// shape: shape,
+					icon: 'http://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=%7c9874BA%7c9874BA&.png',
+					shape: shape,
 				});
 				marker.addListener('click', function (event) {
 					console.log("you clicked it")
@@ -44,6 +44,8 @@ function initMap() {
 					long = marker.getPosition().lng();
 					console.log({lat})
 					console.log({long})
+
+
 					//query lat and long
 					//get venue detail number associated
      					// open venue detail
@@ -70,7 +72,8 @@ handleAddVenueMarker = (evt) => {
 		position: nss,
 		map: map,
         draggable: true,
-        animation: google.maps.Animation.DROP,
+		animation: google.maps.Animation.DROP,
+
 	});
 	google.maps.event.addListener(marker, 'dragend', function (event) {
 		lat = marker.getPosition().lat();

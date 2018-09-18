@@ -159,3 +159,22 @@ nav > a {
 	width: 200px;
 	height: 20px;
 }
+
+.registerLoginContainer {
+	display: contents;
+}
+
+.registerLogin {
+	color: #85B9BD;
+	margin-top: 10px;
+	text-decoration: none;
+}
+
+.login-form-container {
+	left: 50% !important;
+	width: 250px !important;
+}
+
+#login_form > input {
+	width: 150px;
+}

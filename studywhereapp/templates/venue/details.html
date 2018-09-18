@@ -15,7 +15,6 @@
 		<p>Drinks Available {{ venue.drinks_available }}</p>
 		<p>Food Available {{ venue.food_available }}</p>
 	</div>
-	<a class="btn btn-default" href="{% url 'venue_edit' pk=venue.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
 
 	{% if venue.image %}
 	<img style="width: 25%" src="{{ venue.image.url }}" alt="venue image">

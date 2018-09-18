@@ -22,11 +22,7 @@
 	  </form>
 	{% endif %} -->
 
-	{% if nav_location != 'add' %}
-	  <form action="/add" method='get' >
-		<input class="add_venue" type="submit" value="Add a Study Place">
-	  </form>
-	{% endif %}
+
 
 
 	{% if nav_location != 'index' %}
@@ -36,6 +32,12 @@
 	</form></a>
 	{% endif %}
 
+	{% if user.is_authenticated %}
+		{% if nav_location != 'add' %}
+			<form action="/add" method='get' >
+			<input class="add_venue" type="submit" value="Add a Study Place">
+			</form>
+  		{% endif %}
 	<div class="dropdown">
 		<button class="dropbtn">Welcome {{ user.username }}!
 			<i class="fa fa-caret-down"></i>
@@ -45,5 +47,9 @@
 			<a href="{% url 'studywhereapp:logout' %}">Logout</a>
 		</div>
 	</div>
+	{% else %}
+    <div class="registerLoginContainer"><a  class="registerLogin" href="{% url 'studywhereapp:register' %}">Register</a>
+   <a class="registerLogin" href="{% url 'studywhereapp:login' %}">Login</a></div>
+	{% endif %}
 
   </nav>

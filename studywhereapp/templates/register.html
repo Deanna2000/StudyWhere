@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>StudyWhere</title>
-    </head>
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
 
-    <body>
+	{% block main_stuff %}
+	<div class="register-form-container floating-panel">
         <h1>Register with StudyWhere</h1>
 
         {% if registered %}
@@ -22,10 +21,10 @@
                  (<p>) element. This ensures each element appears on a new line,
                  making everything look neater. -->
             {{ user_form.as_p }}
-            {{ customer_form.as_p}}
+            {{ student_form.as_p}}
             <!-- Provide a button to click to submit the form. -->
             <input type="submit" name="submit" value="Register" />
         </form>
-        {% endif %}
-    </body>
-</html>
+		{% endif %}
+	</div>
+	{% endblock main_stuff %}
