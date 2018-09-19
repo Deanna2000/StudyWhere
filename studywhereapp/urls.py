@@ -19,6 +19,6 @@ urlpatterns = [
     url(r'^get_venues$', views.get_all_venues, name='all_venues'),
     url(r'^detail/(?P<pk>\d+)/$', views.detail_venue, name='detail'),
     url(r'^account/$', views.account_view, name='account'),
-	url(r'^account_edit/<int:pk>/edit/$', views.account_edit, name='account_edit'),
+	url(r'^account/(?P<pk>\d+)/edit/$', views.account_edit, name='account_edit'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

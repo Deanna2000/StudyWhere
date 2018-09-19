@@ -56,7 +56,6 @@ def register(request):
         template_name = 'register.html'
         return render(request, template_name, {'user_form': user_form, 'student_form': student_form})
 
-
 def login_user(request):
     '''Handles the creation of a new user for authentication
 
@@ -84,7 +83,6 @@ def login_user(request):
             # Bad login details were provided. So we can't log the user in.
             print("Invalid login details: {}, {}".format(username, password))
             return HttpResponse("Invalid login details supplied.")
-
 
     return render(request, 'login.html', {}, context)
 
@@ -125,19 +123,20 @@ def detail_venue(request, pk):
 			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def add_venue(request):
-    if request.method == 'GET':
-        venue_form = VenueForm()
-        template_name = 'venue/create.html'
-        return render(request, template_name, {'venue_form': venue_form})
+	if request.method == 'GET':
+		venue_form = VenueForm()
+		comment_form = CommentForm()
+		template_name = 'venue/create.html'
+		return render(request, template_name, {'venue_form': venue_form, 'comment_form': comment_form})
 
-    elif request.method == 'POST':
-        venue_form = VenueForm(request.POST, request.FILES)
-        if venue_form.is_valid():
-            venue = venue_form.save(commit=False)
-            venue.student = request.user
-            venue.save()
-        template_name = 'venue/success.html'
-        return render(request, template_name, {'add': venue})
+	elif request.method == 'POST':
+		venue_form = VenueForm(request.POST, request.FILES)
+		if venue_form.is_valid():
+			venue = venue_form.save(commit=False)
+			venue.student = request.user
+			venue.save()
+			template_name = 'venue/success.html'
+			return render(request, template_name, {'add': venue})
 
 @login_required
 def account_view(request):
@@ -163,14 +162,19 @@ def index(request):
   return render(request, 'index.html', context)
 
 def account_edit(request, pk):
-	user = get_object_or_404(User, pk=pk)
+	# user = get_object_or_404(User, pk=pk)
 	student = get_object_or_404(Student, pk=pk)
 	if request.method == "POST":
-		form = UserForm(request.POST, instance=user)
-		if form.is_valid():
-			user = form.save(commit=False)
-			user.save()
-			return redirect('index.html', pk=user.pk)
+		# user_form = UserForm(request.POST, instance=user)
+		student_form = StudentForm(request.POST, instance=student)
+		if student_form.is_valid():
+			# user = user_form.save(commit=False)
+			student = student_form.save(commit=False)
+			# user.save()
+			student.save()
+			template_name = 'account.html'
+		return redirect('studywhereapp:account')
 	else:
-		form = UserForm(instance=user)
-		return render(request, 'account.html', {'form': form})
+		# user_form = UserForm(instance=user)
+		student_form = StudentForm(instance=student)
+		return render(request, 'account_edit.html', {'student_form': student_form})

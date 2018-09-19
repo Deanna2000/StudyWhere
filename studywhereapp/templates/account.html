@@ -4,7 +4,7 @@
 
 {% block main_stuff %}
 <div class="floating-panel profile">
-	<a class="btn btn-default" href="{% url 'account_edit' pk=account.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+	<a class="btn btn-default" href="{% url 'studywhereapp:account_edit' pk=user.pk %}">test<span class="glyphicon glyphicon-pencil"></span></a>
     <h2>Username: {{ user.username }}</h2>
     <h2>Email: {{user.email}}</h2>
     <h2>First Name: {{ user.first_name }}</h2>
