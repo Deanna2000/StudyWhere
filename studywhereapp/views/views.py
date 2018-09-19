@@ -3,9 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
-from studywhereapp.forms import UserForm, VenueForm, CustomerForm, CommentForm
+from studywhereapp.forms import UserForm, VenueForm, StudentForm, CommentForm
 from studywhereapp.models import *
 from django.conf import settings
+from django.views.generic.edit import UpdateView
 import json
 
 
@@ -31,14 +32,14 @@ def register(request):
     # on Django's built-in User model
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
-        customer_form = CustomerForm(data=request.POST)
+        student_form = StudentForm(data=request.POST)
 
         if user_form.is_valid():
             # Save the user's form data to the database.
             user = user_form.save()
-            customer = customer_form.save(commit=False)
-            customer.user = user
-            customer.save()
+            student = student_form.save(commit=False)
+            student.user = user
+            student.save()
             # Now we hash the password with the set_password method.
             # Once hashed, we can update the user object.
             user.set_password(user.password)
@@ -51,11 +52,9 @@ def register(request):
 
     elif request.method == 'GET':
         user_form = UserForm()
-        customer_form = CustomerForm()
+        student_form = StudentForm()
         template_name = 'register.html'
-        return render(request, template_name, {'user_form': user_form, 'customer_form': customer_form})
-
-# pass profile form through render as well. one visible form, 2 under the hood
+        return render(request, template_name, {'user_form': user_form, 'student_form': student_form})
 
 def login_user(request):
     '''Handles the creation of a new user for authentication
@@ -84,7 +83,6 @@ def login_user(request):
             # Bad login details were provided. So we can't log the user in.
             print("Invalid login details: {}, {}".format(username, password))
             return HttpResponse("Invalid login details supplied.")
-
 
     return render(request, 'login.html', {}, context)
 
@@ -125,30 +123,35 @@ def detail_venue(request, pk):
 			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def add_venue(request):
-    if request.method == 'GET':
-        venue_form = VenueForm()
-        template_name = 'venue/create.html'
-        return render(request, template_name, {'venue_form': venue_form})
+	if request.method == 'GET':
+		venue_form = VenueForm()
+		comment_form = CommentForm()
+		template_name = 'venue/create.html'
+		return render(request, template_name, {'venue_form': venue_form, 'comment_form': comment_form})
 
-
-    elif request.method == 'POST':
-        venue_form = VenueForm(request.POST, request.FILES)
-        if venue_form.is_valid():
-            venue = venue_form.save(commit=False)
-            venue.student = request.user
-            venue.save()
-        template_name = 'venue/success.html'
-        return render(request, template_name, {'add': venue})
+	elif request.method == 'POST':
+		venue_form = VenueForm(request.POST, request.FILES)
+		if venue_form.is_valid():
+			venue = venue_form.save(commit=False)
+			venue.student = request.user
+			venue.save()
+			template_name = 'venue/success.html'
+			return render(request, template_name, {'add': venue})
 
 @login_required
 def account_view(request):
-
     return render(request, 'account.html')
 
 
+def venues_lat(request):
+	lat = request.GET.get("lat", None)
+	print("python lat", lat)
+	queryset = None
+	if lat is not None:
+		queryset = Venue.objects.filter(latitude=lat)
+		print("python queryset", queryset)
+	return JsonResponse({"results": list(queryset)}, safe=False)
 
-
-# Create your views here.
 
 def index(request):
   """ Import Google API Key & Creates Initial Homepage View """
@@ -157,3 +160,21 @@ def index(request):
     'api_key': api_key
   }
   return render(request, 'index.html', context)
+
+def account_edit(request, pk):
+	# user = get_object_or_404(User, pk=pk)
+	student = get_object_or_404(Student, pk=pk)
+	if request.method == "POST":
+		# user_form = UserForm(request.POST, instance=user)
+		student_form = StudentForm(request.POST, instance=student)
+		if student_form.is_valid():
+			# user = user_form.save(commit=False)
+			student = student_form.save(commit=False)
+			# user.save()
+			student.save()
+			template_name = 'account.html'
+		return redirect('studywhereapp:account')
+	else:
+		# user_form = UserForm(instance=user)
+		student_form = StudentForm(instance=student)
+		return render(request, 'account_edit.html', {'student_form': student_form})

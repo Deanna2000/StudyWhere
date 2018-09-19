@@ -1,13 +1,9 @@
+{% extends 'index.html' %}
 {% load staticfiles %}
-<html>
-<head>
-    <title>Search</title>
-</head>
-<body>
-		<link rel="stylesheet" type="text/css" href="{% static 'studywhereapp/css/styles.css' %}" />
-		{% include "navbar.html" with nav_location=view.location %}
+{% load bootstrap3 %}
 
-	<h1>Venue Results</h1>
+{% block main_stuff %}
+	<h3>Search Results</h3>
 
 	{% if venues|length > 0 %}
 		{% for result in venues %}
@@ -30,6 +26,4 @@
 		<input type="submit" value="Search" />
 		</form>
 	{% endif %}
-
-</body>
-</html>
+{% endblock main_stuff %}

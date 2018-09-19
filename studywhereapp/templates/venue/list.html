@@ -2,19 +2,14 @@
 {% load staticfiles %}
 {% load bootstrap3 %}
 
-	{% block main_stuff %}
-
-    <h1>Venues</h1>
-	<div class="cardContainer">
+{% block main_stuff %}
+	<div class="floating-panel venuesContainer">
+    <h1>All Venues</h1>
 		{% for venue in venues %}
-    	<div class="card">
-		{% if venue.image %}
-		<img  class="venueListItem" style="width:100%" src="{{venue.image.url}}" alt="venue image">
-		{% endif %}
-		<a href="{% url 'studywhereapp:detail' venue.pk %}">Comments: {{ venue.comments.count }}</a>
-        <a href="{% url 'studywhereapp:detail' venue.pk %}"> {{venue.name}} {{ venue.address }}</a>
+    	<div class="venueItems">
+			<a href="{% url 'studywhereapp:detail' venue.pk %}"> <h2>{{venue.name}}</h2> </a>
+			<p>{{ venue.address }} Comments: {{ venue.comments.count }}</p>
 		</div>
-	</div>
     {% endfor %}
-
-    {% endblock main_stuff%}
+	</div>
+{% endblock main_stuff%}

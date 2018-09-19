@@ -15,7 +15,7 @@ function initMap() {
 			const markers = JSON.parse(myjson.results)
 			markers.forEach((marker) => {
 				const bookMarker = {
-					url: 'https://drive.google.com/open?id=1QkMfR7uRlQhfRA0KcAeOOc1bvJY0BU3r',
+					url: 'https://imgur.com/a/QPn8G04',
 					// This marker is 20 pixels wide by 34 pixels high.
 					size: new google.maps.Size(20, 34),
 					// The origin for this image is (0, 0).
@@ -31,21 +31,35 @@ function initMap() {
 					type: 'poly'
 				  };
 
-				new google.maps.Marker({
+				var marker = new google.maps.Marker({
 					position: { "lat": marker.latitude, "lng": marker.longitude  },
 					map: map,
 					draggable: false,
-					// icon: bookMarker,
-					// shape: shape,
+					icon: 'http://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=%7c9874BA%7c9874BA&.png',
+					shape: shape,
 				});
-				google.maps.event.addListener(marker, 'click', function (event) {
-					alert("you clicked on it")
-					// open venue detail
+				marker.addListener('click', function (event) {
+					console.log("you clicked it")
+					lat = marker.getPosition().lat();
+					long = marker.getPosition().lng();
+					console.log(marker)
+					console.log({lat})
+					console.log({long})
+					fetch(`http://127.0.0.1:8000/venues_lat/?lat=${lat}`).then(r => r.json()).then(r => {
+					console.log(r)
+})
+
+
+
+					//query lat and long
+					//get venue detail number associated
+     					// open venue detail
+					// location.href = "/detail/";
 				});
-				google.maps.event.addListener(marker, 'mouseover', function (event) {
-					// highlight marker
-					// open venue small detail
-				});
+				// google.maps.event.addListener(marker, 'mouseover', function (event) {
+				// 	// highlight marker
+				// 	// open venue small detail
+				// });
 
 			});
 		})
@@ -63,7 +77,8 @@ handleAddVenueMarker = (evt) => {
 		position: nss,
 		map: map,
         draggable: true,
-        animation: google.maps.Animation.DROP,
+		animation: google.maps.Animation.DROP,
+
 	});
 	google.maps.event.addListener(marker, 'dragend', function (event) {
 		lat = marker.getPosition().lat();

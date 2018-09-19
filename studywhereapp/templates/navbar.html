@@ -22,28 +22,40 @@
 	  </form>
 	{% endif %} -->
 
-	{% if nav_location != 'add' %}
-	  <form action="/add" method='get' >
-		<input class="add_venue" type="submit" value="Add a Study Place">
-	  </form>
-	{% endif %}
+
 
 
 	{% if nav_location != 'index' %}
 	<a> <form action="/search/" method="get">
-		<input class="search_box" type="text" name="q" value="{{ query }}">
-		<input type="submit" value="Search">
+		<input placeholder="filter by name or address" class="search_box" type="text" name="q" value="{{ query }}">
+		<input style="opacity: 0" type="submit" value="Search">
 	</form></a>
 	{% endif %}
 
+	{% if nav_location != 'list_venues' %}
+	<a> <form action="/venues" method="get">
+		<input class="list_venues" type="submit" value="Study Places">
+	</form></a>
+	{% endif %}
+
+	{% if user.is_authenticated %}
+		{% if nav_location != 'add' %}
+			<form action="/add" method='get' >
+			<input class="add_venue" type="submit" value="Add a Study Place">
+			</form>
+  		{% endif %}
 	<div class="dropdown">
 		<button class="dropbtn">Welcome {{ user.username }}!
 			<i class="fa fa-caret-down"></i>
 		</button>
 		<div class="dropdown-content">
-			<a href="/account">Profile</a>
+			<a href="{% url 'studywhereapp:account' %}">Profile</a>
 			<a href="{% url 'studywhereapp:logout' %}">Logout</a>
 		</div>
 	</div>
+	{% else %}
+    <div class="registerLoginContainer"><a  class="registerLogin" href="{% url 'studywhereapp:register' %}">Register</a>
+   <a class="registerLogin" href="{% url 'studywhereapp:login' %}">Login</a></div>
+	{% endif %}
 
   </nav>

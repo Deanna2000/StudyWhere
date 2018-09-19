@@ -1,6 +1,8 @@
 {% extends 'index.html' %}
 {% load staticfiles %}
 {% load bootstrap3 %}
+
+
 {% block main_stuff %}
 <div class="venueDetailView floating-panel">
 	<h1>{{ venue.name }}</h1>
@@ -13,16 +15,19 @@
 		<p>Drinks Available {{ venue.drinks_available }}</p>
 		<p>Food Available {{ venue.food_available }}</p>
 	</div>
+
 	{% if venue.image %}
-	<img style="width: 25%" src="{{ venue.image.url }}" alt="venue image"> {% endif %}
+	<img style="width: 25%" src="{{ venue.image.url }}" alt="venue image">
+	{% endif %}
 
 <hr>
 
-<h1>Add a Comment</h1>
 <form method="post" >
+	<div class="commentinputfield">
 	{% csrf_token %}
 	{{ form.as_p }}
-	<input type="submit" value="Send" />
+	</div>
+	<input style="opacity: 0;" type="submit" value="Send" />
 </form>
 {% for comment in venue.comments.all %}
 <div class="comment">

@@ -4,19 +4,20 @@
 
 
 {% block main_stuff %}
-	<div class="floating-panel">
+	<div class="floating-panel add_venue_container">
     	<h1>Add a New Venue</h1>
-    	<form method="post" enctype="multipart/form-data">
+    	<form class="add_venue_form" method="post" enctype="multipart/form-data">
       		{% csrf_token %}
-      		{{ venue_form.as_p }}
-      		<input type="submit" value="Add It" />
+			  {{ venue_form.as_p }}
+			  {{ comment_form.as_p }}
+      		<input class="venueaddsubmitbutton" type="submit" value="Add It" />
 		</form>
 	</div>
 {% endblock main_stuff %}
 
-	{% block google_scripts %}
+{% block google_scripts %}
 	<script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&libraries=places&callback=handleAddVenueMarker"
 	async defer type="text/javascript"></script>
 	<script src="{% static 'studywhereapp/javascript/main.js' %}"></script>
-	{% endblock google_scripts %}
+{% endblock google_scripts %}
 
