@@ -10,7 +10,6 @@
         <strong>Thank you for registering!</strong>
         <a href="{% url 'studywhereapp:index' %}">Return to the homepage.</a><br />
         {% else %}
-        <strong>Register here!</strong><br />
 
         <form id="user_form" method="post" action="{% url 'studywhereapp:register' %}"
                 enctype="multipart/form-data">
@@ -23,7 +22,7 @@
             {{ user_form.as_p }}
             {{ student_form.as_p}}
             <!-- Provide a button to click to submit the form. -->
-            <input type="submit" name="submit" value="Register" />
+            <input class="registersubmitbutton" type="submit" name="submit" value="Register" />
         </form>
 		{% endif %}
 	</div>

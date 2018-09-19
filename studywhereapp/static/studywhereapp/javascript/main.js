@@ -42,8 +42,13 @@ function initMap() {
 					console.log("you clicked it")
 					lat = marker.getPosition().lat();
 					long = marker.getPosition().lng();
+					console.log(marker)
 					console.log({lat})
 					console.log({long})
+					fetch(`http://127.0.0.1:8000/venues_lat/?lat=${lat}`).then(r => r.json()).then(r => {
+					console.log(r)
+})
+
 
 
 					//query lat and long

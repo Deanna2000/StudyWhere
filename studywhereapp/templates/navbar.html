@@ -27,8 +27,14 @@
 
 	{% if nav_location != 'index' %}
 	<a> <form action="/search/" method="get">
-		<input class="search_box" type="text" name="q" value="{{ query }}">
-		<input type="submit" value="Search">
+		<input placeholder="filter by name or address" class="search_box" type="text" name="q" value="{{ query }}">
+		<input style="opacity: 0" type="submit" value="Search">
+	</form></a>
+	{% endif %}
+
+	{% if nav_location != 'list_venues' %}
+	<a> <form action="/venues" method="get">
+		<input class="list_venues" type="submit" value="Study Places">
 	</form></a>
 	{% endif %}
 

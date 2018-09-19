@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 	'django.contrib.gis',
 	'django.contrib.gis.geos',
 	'django.contrib.gis.db',
+	'corsheaders',
     'studywhereapp',
 	'bootstrap3',
 	'django_google_maps'
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'studywhereproject.urls'
@@ -74,6 +76,15 @@ TEMPLATES = [
         },
     },
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8000',
+    'localhost:3000',
+    '127.0.0.1:8000',
+    '127.0.0.1:3000',
+    '127.0.0.1:3001',
+    'localhost:3001',
+)
 
 WSGI_APPLICATION = 'studywhereproject.wsgi.application'
 
@@ -134,3 +145,4 @@ MEDIA_URL = '/image/'
 
 GOOGLE_MAPS_API_KEY = 'AIzaSyChjXW87qz1LoRM5h_hJXOdVZC5JN7a0DY'
 
+CORS_ORIGIN_ALLOW_ALL = True

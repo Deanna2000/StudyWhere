@@ -22,11 +22,12 @@
 
 <hr>
 
-<h1>Add a Comment</h1>
 <form method="post" >
+	<div class="commentinputfield">
 	{% csrf_token %}
 	{{ form.as_p }}
-	<input type="submit" value="Send" />
+	</div>
+	<input style="opacity: 0;" type="submit" value="Send" />
 </form>
 {% for comment in venue.comments.all %}
 <div class="comment">

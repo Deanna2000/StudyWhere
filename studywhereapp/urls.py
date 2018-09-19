@@ -7,6 +7,7 @@ from . import views
 app_name = "studywhereapp"
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^venues_lat/$', views.venues_lat, name='venues_lat'),
     url(r'^login$', views.login_user, name='login'),
     url(r'^logout$', views.user_logout, name='logout'),
     url(r'^register$', views.register, name='register'),
@@ -18,5 +19,6 @@ urlpatterns = [
     url(r'^get_venues$', views.get_all_venues, name='all_venues'),
     url(r'^detail/(?P<pk>\d+)/$', views.detail_venue, name='detail'),
     url(r'^account/$', views.account_view, name='account'),
+	url(r'^account_edit/<int:pk>/edit/$', views.account_edit, name='account_edit'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

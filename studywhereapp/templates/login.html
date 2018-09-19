@@ -8,12 +8,12 @@
 
         <form id="login_form" method="post" action="{% url 'studywhereapp:login' %}">
             {% csrf_token %}
-            Username: <input type="text" name="username" value="" size="50" />
+            <input placeholder="username" type="text" name="username" value="" size="50" />
             <br />
-            Password: <input type="password" name="password" value="" size="50" />
+           	<input placeholder="password" type="password" name="password" value="" size="50" />
             <br />
 
-            <input type="submit" value="submit" />
+            <input class="loginsubmitbutton" type="submit" value="submit" />
         </form>
 	</div>
 	{% endblock main_stuff %}

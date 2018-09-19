@@ -141,8 +141,17 @@ def add_venue(request):
 
 @login_required
 def account_view(request):
-
     return render(request, 'account.html')
+
+
+def venues_lat(request):
+	lat = request.GET.get("lat", None)
+	print("python lat", lat)
+	queryset = None
+	if lat is not None:
+		queryset = Venue.objects.filter(latitude=lat)
+		print("python queryset", queryset)
+	return JsonResponse({"results": list(queryset)}, safe=False)
 
 
 def index(request):
@@ -152,3 +161,16 @@ def index(request):
     'api_key': api_key
   }
   return render(request, 'index.html', context)
+
+def account_edit(request, pk):
+	user = get_object_or_404(User, pk=pk)
+	student = get_object_or_404(Student, pk=pk)
+	if request.method == "POST":
+		form = UserForm(request.POST, instance=user)
+		if form.is_valid():
+			user = form.save(commit=False)
+			user.save()
+			return redirect('index.html', pk=user.pk)
+	else:
+		form = UserForm(instance=user)
+		return render(request, 'account.html', {'form': form})

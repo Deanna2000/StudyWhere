@@ -9,7 +9,7 @@ nav {
 	flex-flow: row;
 	justify-content: space-evenly;
 	background-color: #D8D8D8;
-	padding: 5px;
+	padding-top: 8px;
 	font-family: 'Arapey', serif;
 }
 
@@ -65,22 +65,20 @@ nav > a {
 	line-height: 20px;
 	font-size: .7em;
 	padding-left: 10px;
-  }
+}
 
-  /* .floating-panel > p > input {
-	  border: solid black 2px;
-  } */
 
-  .floating-panel > h1 {
-	  color: #85B9BD;
-	  font-size: 1.7em;
-      font-family: Arapey, serif;
-      font-weight: 500;
-  }
+.floating-panel > h1 {
+	color: #85B9BD;
+	font-size: 1.5em;
+	font-family: Arapey, serif;
+	font-weight: 500;
+	text-align: center;
+}
 
-  .swlogo {
-	  height: 40px;
-  }
+.swlogo {
+	height: 40px;
+}
 
 .profile {
 	/* right: 10% !important; */
@@ -139,11 +137,8 @@ nav > a {
 	text-align: center;
 }
 
-.list_venues {
-	margin-left: 20px;
-}
 
-.add_venue {
+.add_venue, .list_venues{
 	border: none;
 	outline: none;
 	color: #85B9BD;
@@ -153,21 +148,32 @@ nav > a {
 	margin-top: 10px;
 }
 
+.add_venue_form input {
+	width: 150px;
+}
+
+.add_venue_container {
+	width: 200px;
+}
+
 .search_box {
-	background-color: #9874BA;
+	background-color:lightgrey;
 	margin-top: 10px;
 	width: 200px;
-	height: 20px;
+	height: 25px;
 }
 
 .registerLoginContainer {
 	display: contents;
+	left: 25% !important;
 }
 
 .registerLogin {
 	color: #85B9BD;
 	margin-top: 10px;
 	text-decoration: none;
+	display: grid;
+	column-count: 2;
 }
 
 .login-form-container {
@@ -175,6 +181,58 @@ nav > a {
 	width: 250px !important;
 }
 
+.register-form-container {
+	left: 60% !important;
+	width: 200px !important;
+}
+
+#login_form {
+	text-align: center;
+}
+
 #login_form > input {
 	width: 150px;
+
 }
+
+#user_form {
+	display: block;
+	text-align: center;
+}
+
+label[for=id_name], label[for=id_description], label[for=id_hours], label[for=id_price], label[for=id_address], label[for=id_latitude], label[for=id_longitude], label[for=id_username], label[for=id_email], label[for=id_password], label[for=id_first_name], label[for=id_last_name], label[for=id_street], label[for=id_city], label[for=id_state], label[for=id_zip], label[for=id_phone_number], label[for=username] {
+	display: none;
+}
+
+.loginsubmitbutton, .registersubmitbutton, .venueaddsubmitbutton {
+	display: flex;
+    justify-content: center;
+    margin: auto;
+	background-color: #9874BA;
+	height: 20px;
+	margin-top: 6px;
+	width: 130px;
+}
+
+span.helptext {
+	display: none;
+}
+
+.add_venue_form {
+	display: block;
+	text-align: center;
+}
+
+.commentinputfield input {
+	height: 40px;
+	padding-bottom: 20px;
+}
+
+::-webkit-input-placeholder {
+	color: #9874BA;
+}
+
+.venuesContainer {
+	margin-top: 20px;
+}
+
