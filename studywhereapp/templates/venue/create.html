@@ -5,11 +5,13 @@
 
 {% block main_stuff %}
 	<div class="floating-panel add_venue_container">
-    	<h1>Add a New Venue</h1>
+		<div class="closeContainer">
+			<h1>Add a New Venue</h1>
+			<a class="closeOption" href="/"><p>X</p></a>
+		</div>
     	<form class="add_venue_form" method="post" enctype="multipart/form-data">
       		{% csrf_token %}
 			  {{ venue_form.as_p }}
-			  {{ comment_form.as_p }}
       		<input class="venueaddsubmitbutton" type="submit" value="Add It" />
 		</form>
 	</div>

@@ -17,6 +17,45 @@ nav > a {
 	font-family: 'Arapey', serif;
 }
 
+.add_venue_form {
+	display: block;
+	text-align: center;
+}
+
+.add_venue, .list_venues{
+	border: none;
+	outline: none;
+	color: #85B9BD;
+	font-family: 'Arapey', serif;
+	background-color: rgb(216,216,216);
+	font-size: 1.2em;
+	margin-top: 10px;
+}
+
+.add_venue_form input {
+	width: 150px;
+}
+
+.add_venue_container {
+	width: 200px;
+}
+
+.closeOption {
+	text-decoration: none;
+    color: gray;
+	font-family: sans-serif;
+}
+
+.closeContainer {
+	display: flex;
+	justify-content: space-between;
+    margin-right: 5%;
+}
+
+.closeOptionContainer {
+	display: inline-flex;
+}
+
 .card {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -36,54 +75,34 @@ nav > a {
 	flex-direction: row;
 }
 
-.venueDetailView {
-	width: 300px;
-	background-color: #85B9BD !important;
-	color: white;
-	overflow: hidden;
-}
-
-.venueDetailView > h1 {
-	color: white !important;
-}
-
 .comment {
-    margin: 20px 0px 20px 20px;
+    margin: 0px 0px 7px 8%;
 }
 
-
-
-.floating-panel {
-	position: absolute;
-	top: 13%;
-	left: 10%;
-	z-index: 5;
-	background-color: rgba(216,216,216,.88);
-	padding: 5px;
-	border: 1px solid #999;
-	text-align: left;
-	line-height: 20px;
-	font-size: .7em;
-	padding-left: 10px;
+.comment-container {
+	overflow: scroll;
+	height: 100px;
+	margin-top: -10px;
 }
 
-
-.floating-panel > h1 {
-	color: #85B9BD;
-	font-size: 1.5em;
-	font-family: Arapey, serif;
-	font-weight: 500;
-	text-align: center;
-}
-
-.swlogo {
+.commentinputfield input {
 	height: 40px;
+	padding-bottom: 25px;
+	margin-left: 8%;
+	width: 85%;
 }
 
-.profile {
-	/* right: 10% !important; */
-	left: 60% !important;
+.date {
+	font-size: xx-small;
 }
+
+.date-name {
+	display: flex;
+    justify-content: space-between;
+    margin-right: 10%;
+}
+
+
 /* Dropdown container - needed to position the dropdown content */
 .dropdown {
 	overflow: hidden;
@@ -116,6 +135,27 @@ nav > a {
     display: flex;
 }
 
+.floating-panel {
+	position: absolute;
+	top: 13%;
+	left: 10%;
+	z-index: 5;
+	background-color: rgba(216,216,216,.88);
+	padding: 5px;
+	border: 1px solid #999;
+	text-align: left;
+	line-height: 20px;
+	font-size: .7em;
+	padding-left: 10px;
+}
+
+.floating-panel h1 {
+	color: #85B9BD;
+	font-size: 1.5em;
+	font-family: Arapey, serif;
+	font-weight: 500;
+	text-align: center;
+}
 /* Add a dark background on topnav links and the dropdown button on hover */
 .topnav a:hover, .dropdown:hover .dropbtn {
     background-color: rgba(0,0,0,0);
@@ -138,29 +178,29 @@ nav > a {
 }
 
 
-.add_venue, .list_venues{
-	border: none;
-	outline: none;
-	color: #85B9BD;
-	font-family: 'Arapey', serif;
-	background-color: rgb(216,216,216);
-	font-size: 1.2em;
-	margin-top: 10px;
+.login-form-container {
+	left: 50% !important;
+	width: 250px !important;
 }
 
-.add_venue_form input {
+#login_form {
+	text-align: center;
+}
+
+#login_form > input {
 	width: 150px;
 }
 
-.add_venue_container {
-	width: 200px;
+.profile {
+	margin-left: 52%;
+    width: 225px;
+    padding-left: 40px;
 }
 
-.search_box {
-	background-color:lightgrey;
-	margin-top: 10px;
-	width: 200px;
-	height: 25px;
+.profile p {
+	color: gray;
+	font-family: inherit;
+	font-size: 1.2em;
 }
 
 .registerLoginContainer {
@@ -176,23 +216,20 @@ nav > a {
 	column-count: 2;
 }
 
-.login-form-container {
-	left: 50% !important;
-	width: 250px !important;
-}
-
 .register-form-container {
 	left: 60% !important;
 	width: 200px !important;
 }
 
-#login_form {
-	text-align: center;
+.search_box {
+	background-color:lightgrey;
+	margin-top: 10px;
+	width: 200px;
+	height: 25px;
 }
 
-#login_form > input {
-	width: 150px;
-
+.swlogo {
+	height: 40px;
 }
 
 #user_form {
@@ -200,16 +237,53 @@ nav > a {
 	text-align: center;
 }
 
-label[for=id_name], label[for=id_description], label[for=id_hours], label[for=id_price], label[for=id_address], label[for=id_latitude], label[for=id_longitude], label[for=id_username], label[for=id_email], label[for=id_password], label[for=id_first_name], label[for=id_last_name], label[for=id_street], label[for=id_city], label[for=id_state], label[for=id_zip], label[for=id_phone_number], label[for=username] {
+.updateinfolink {
+	text-decoration: none;
+	color: #9874BA;
+}
+
+.venuesContainer {
+	margin-top: 20px;
+}
+
+
+.venue-detail-view {
+	background-image:  ;
+	width: 300px;
+	background-color: #85B9BD !important;
+	color: white;
+	line-height: 8px !important;
+}
+
+.venue-detail-view  h1 {
+	color: gray !important;
+	display: flex;
+	margin-left: 8%;
+}
+
+.venue-detail-view img {
+	width: 95%;
+    height: 150px;
+    object-fit: cover;
+	opacity: .4;
+	margin-left: 2%;
+}
+
+.venue-detail-fields {
+	margin-left: 8%;
+}
+
+
+label[for=id_name], label[for=id_description], label[for=id_hours], label[for=id_price], label[for=id_address], label[for=id_latitude], label[for=id_longitude], label[for=id_username], label[for=id_email], label[for=id_password], label[for=id_first_name], label[for=id_last_name], label[for=id_street], label[for=id_city], label[for=id_state], label[for=id_zip], label[for=id_phone_number], label[for=username], label[for=id_text] {
 	display: none;
 }
 
-.loginsubmitbutton, .registersubmitbutton, .venueaddsubmitbutton {
+.loginsubmitbutton, .registersubmitbutton, .venueaddsubmitbutton, .updatesubmitbutton {
 	display: flex;
     justify-content: center;
     margin: auto;
 	background-color: #9874BA;
-	height: 20px;
+	height: 25px;
 	margin-top: 6px;
 	width: 130px;
 }
@@ -218,21 +292,9 @@ span.helptext {
 	display: none;
 }
 
-.add_venue_form {
-	display: block;
-	text-align: center;
-}
-
-.commentinputfield input {
-	height: 40px;
-	padding-bottom: 20px;
-}
 
 ::-webkit-input-placeholder {
 	color: #9874BA;
-}
-
-.venuesContainer {
-	margin-top: 20px;
+	font-family: 'Arapey', serif;
 }
 

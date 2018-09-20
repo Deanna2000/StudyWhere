@@ -4,7 +4,10 @@
 
 {% block main_stuff %}
 	<div class="floating-panel venuesContainer">
-    <h1>All Venues</h1>
+		<div class="closeContainer">
+			<h1>All Venues</h1>
+			<a class="closeOption" href="/"><p>X</p></a>
+		</div>
 		{% for venue in venues %}
     	<div class="venueItems">
 			<a href="{% url 'studywhereapp:detail' venue.pk %}"> <h2>{{venue.name}}</h2> </a>

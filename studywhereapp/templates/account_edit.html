@@ -4,11 +4,15 @@
 
 	{% block main_stuff %}
 	<div class="register-form-container floating-panel">
-        <h1>Update your info</h1>
+		<div class="closeContainer">
+			<h1>Update your info</h1>
+			<a class="closeOption" href="/"><p>X</p></a>
+		</div>
 
 
         <form id="user_form" method="post"
-                enctype="multipart/form-data">
+				enctype="multipart/form-data">
+
 
             {% csrf_token %}
 

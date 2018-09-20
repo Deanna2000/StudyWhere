@@ -4,38 +4,51 @@
 
 
 {% block main_stuff %}
-<div class="venueDetailView floating-panel">
-	<h1>{{ venue.name }}</h1>
-	<div>
+<div class="venue-detail-view floating-panel">
+	<div class="closeContainer">
+		<h1>{{ venue.name }}</h1>
+		<a class="closeOption" href="/"><p>X</p></a>
+	</div>
+	<div class="venue-detail-fields">
+		<p> {{ venue.address }}</p>
+		{% if venue.image %}
+		<img src="{{ venue.image.url }}" alt="venue image">
+		{% endif %}
+		<p>Hours {{ venue.hours }}</p>
 		<p>Description {{ venue.description }}</p>
 		<p>Price {{ venue.price }}</p>
-		<p>Hours {{ venue.hours }}</p>
-		<p>Venue Rating {{ venue.venue_rating }}</p>
-		<p>Location {{ venue.location }}</p>
-		<p>Drinks Available {{ venue.drinks_available }}</p>
-		<p>Food Available {{ venue.food_available }}</p>
+	{% if venue.drinks_served %}
+		<p>There are drinks here!</p>
+	{% endif %}
+	{% if venue.food_served %}
+		<p>You can eat!</p>
+	{% endif %}
+	{% if venue.wifi_available %}
+		<p>There is wifi!</p>
+	{% endif %}
 	</div>
 
-	{% if venue.image %}
-	<img style="width: 25%" src="{{ venue.image.url }}" alt="venue image">
-	{% endif %}
+
 
 <hr>
-
 <form method="post" >
 	<div class="commentinputfield">
-	{% csrf_token %}
-	{{ form.as_p }}
+		{% csrf_token %}
+		{{ form.as_p }}
 	</div>
-	<input style="opacity: 0;" type="submit" value="Send" />
-</form>
-{% for comment in venue.comments.all %}
-<div class="comment">
-	<div class="date">{{ comment.created_date }}</div>
-	<strong>{{ comment.author }}</strong>
-	<p>{{ comment.text|linebreaks }}</p>
+	<input style="opacity: 0;margin-top: -60;" type="submit" value="Send" />
+	</form>
+	<div class="comment-container">
+	{% for comment in venue.comments.all %}
+	<div class="comment">
+		<div class="date-name">
+			<strong>{{ comment.author }}</strong>
+			<div class="date">{{ comment.created_date }}</div>
+		</div>
+		<p>{{ comment.text|linebreaks }}</p>
+	</div>
+	{% empty %}
+	{% endfor %}
 </div>
-{% empty %}
-{% endfor %}
 </div>
 {% endblock main_stuff %}
