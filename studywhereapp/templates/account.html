@@ -4,13 +4,18 @@
 
 {% block main_stuff %}
 <div class="floating-panel profile">
-	<a class="btn btn-default" href="{% url 'studywhereapp:account_edit' pk=user.pk %}">test<span class="glyphicon glyphicon-pencil"></span></a>
-    <h2>Username: {{ user.username }}</h2>
-    <h2>Email: {{user.email}}</h2>
-    <h2>First Name: {{ user.first_name }}</h2>
-    <h2>Last Name: {{ user.last_name }}</h2>
-    <h2>Phone Number: {{ user.student.phone }}</h2>
-    <h2>Address: {{ user.student.street }} {{user.student.city}}, {{user.student.state}} {{user.student.zip}}</h2>
-</div>
+	<div class="closeContainer">
+		<h1>Your Info</h1>
+		<a class="closeOption" href="/"><p>X</p></a>
+	</div>
+		<p>Username:   {{ user.username }}</p>
+    	<p>Email:   {{ user.email }}</p>
+    	<p>First Name: {{ user.first_name }}</p>
+    	<p>Last Name:    {{ user.last_name }}</h2>
+		<p>Phone Number: {{ user.student.phone }}</p>
+		<p>Address:  {{ user.student.street }} </br>
+			{{ user.student.city }}, {{ user.student.state }} {{ user.student.zip }}</p>
+		<a class="btn btn-default updateinfolink" href="{% url 'studywhereapp:account_edit' pk=user.pk %}">Update Your Info</a>
+	</div>
 
 {% endblock main_stuff %}
